@@ -48,64 +48,23 @@
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row">
-                <!-- TODO: dynamic images fetching -->
-                <div class="col-md-3">
-                    <div class="card mb-3 shadow-sm">
-                        <img id="drag1" class="img-cell" src="../static/img/parat_1.png" draggable="true" ondragstart="drag(event)" width="140" height="140">
-                        <div class="card-body">
-                            <p class="card-text">Cell image. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, quod.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <!-- TODO: write script to change image and text -->
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Change image</button>
+                {% for img_src in images %}
+                    <div class="col-md-3">
+                        <div class="card mb-3 shadow-sm card-cell">
+                            <img id="drag{{ loop.index }}" class="img-cell" src="{{ img_src }}" draggable="true" ondragstart="drag(event)" width="140" height="140">
+                            <div class="card-body">
+                                <p class="card-text">Cell image. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, quod.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <!-- TODO: write script to change image and text -->
+                                        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="changeImage(this)">Change image</button>
+                                    </div>
+                                    <small class="text-muted diagnose">Infected or Not</small>
                                 </div>
-                                <small class="text-muted">Infected or Not</small>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card mb-3 shadow-sm">
-                        <img id="drag2" class="img-cell" src="../static/img/parat_2.png" draggable="true" ondragstart="drag(event)" width="140" height="140">
-                        <div class="card-body">
-                            <p class="card-text">Cell image. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, quod.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Change image</button>
-                                </div>
-                                <small class="text-muted">Infected or Not</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card mb-3 shadow-sm">
-                        <img id="drag3" class="img-cell" src="../static/img/unif_1.png" draggable="true" ondragstart="drag(event)" width="140" height="140">
-                        <div class="card-body">
-                            <p class="card-text">Cell image. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, quod.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Change image</button>
-                                </div>
-                                <small class="text-muted">Infected or Not</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card mb-3 shadow-sm">
-                        <img id="drag4" class="img-cell" src="../static/img/unif_2.png" draggable="true" ondragstart="drag(event)" width="140" height="140">
-                        <div class="card-body">
-                            <p class="card-text">Cell image. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, quod.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Change image</button>
-                                </div>
-                                <small class="text-muted">Infected or Not</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
