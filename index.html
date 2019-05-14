@@ -1,42 +1,131 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 <head>
-<style>
-#div1 {
-  width: 350px;
-  height: 70px;
-  padding: 10px;
-  border: 1px solid #aaaaaa;
-}
-</style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Individual Project Meirkhan Yesseyev</title>
 
-function allowDrop(ev) {
-  ev.preventDefault();
-}
-
-function drag(ev) {
-  ev.dataTransfer.setData("text", ev.target.id);
-}
-
-function drop(ev) {
-  ev.preventDefault();
-  var data = ev.dataTransfer.getData("text");
-  var copy = $('#' + data).clone();
-  var target = $('#div1');
-  target.empty().append(copy);
-}
-</script>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="./css/bootstrap.css" media="screen">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+<header>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container d-flex justify-content-between">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <img width="20" height="20" src="./img/cells.svg" />
+                <strong>Malaria cell detection</strong>
+            </a>
+        </div>
+    </div>
+</header>
 
-<p>Drag the W3Schools image into the rectangle:</p>
+<main role="main">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Malaria cell detection</h1>
+            <p class="lead text-muted">Drag the cell image into the rectangle:</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="lead text-muted">Image classifier #1</p>
+                    <div id="dropPlaceholder1" class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <a href="#" class="btn btn-primary my-2">Identify</a>
+                </div>
+                <div class="col-md-6">
+                    <p class="lead text-muted">Image classifier #2</p>
+                    <div id="dropPlaceholder2" class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <a href="#" class="btn btn-primary my-2">Identify</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-<br>
-<img id="drag1" src="img_logo.gif" draggable="true" ondragstart="drag(event)" width="336" height="69">
-<img id="drag2" src="img_chania.jpg" draggable="true" ondragstart="drag(event)" width="336" height="150">
+    <div class="album py-5 bg-light">
+        <div class="container">
 
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card mb-3 shadow-sm">
+                        <img id="drag1" class="img-cell" src="./img/parat_1.png" draggable="true" ondragstart="drag(event)" width="140" height="140">
+                        <div class="card-body">
+                            <p class="card-text">Cell image. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, quod.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card mb-3 shadow-sm">
+                        <img id="drag2" class="img-cell" src="./img/parat_2.png" draggable="true" ondragstart="drag(event)" width="140" height="140">
+                        <div class="card-body">
+                            <p class="card-text">Cell image. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, quod.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card mb-3 shadow-sm">
+                        <img id="drag3" class="img-cell" src="./img/unif_1.png" draggable="true" ondragstart="drag(event)" width="140" height="140">
+                        <div class="card-body">
+                            <p class="card-text">Cell image. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, quod.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card mb-3 shadow-sm">
+                        <img id="drag4" class="img-cell" src="./img/unif_2.png" draggable="true" ondragstart="drag(event)" width="140" height="140">
+                        <div class="card-body">
+                            <p class="card-text">Cell image. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, quod.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer class="text-muted">
+    <div class="container">
+        <p class="float-right">
+            <a href="#">Back to top</a>
+        </p>
+        <p>Neural Network Project by &copy; Meirkhan Yesseyev</p>
+    </div>
+</footer>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
+
