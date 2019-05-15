@@ -35,14 +35,18 @@ function predictImage(target) {
 
     var targetImgPlaceholder = $(target).parent().find('.dropBox img');
     console.log(targetImgPlaceholder);
-    var imgPath = targetImgPlaceholder.attr('src');
+    if (targetImgPlaceholder.length == 0) {
+        alert('Please drag and drop cell image!');
+    } else {
+        var imgPath = targetImgPlaceholder.attr('src');
 
-    $.post({
-        url: '/predict/',
-        data: imgPath,
-        success: function (data) {
-            // console.log('SUCCESS', data);
-            alert(data);
-        }
-    });
+        $.post({
+            url: '/predict',
+            data: imgPath,
+            success: function (data) {
+                // console.log('SUCCESS', data);
+                alert(data);
+            }
+        });
+    }
 }
