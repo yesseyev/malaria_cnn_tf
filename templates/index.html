@@ -34,12 +34,12 @@
                     <p class="lead text-muted">Image classifier #1</p>
                     <div id="dropPlaceholder1" class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                     <!-- TODO: write prediction script for dropped image -->
-                    <a href="#" class="btn btn-primary my-2">Identify</a>
+                    <button onclick="predictImage(this, 1)" class="btn btn-primary my-2">Identify</button>
                 </div>
                 <div class="col-md-6">
                     <p class="lead text-muted">Image classifier #2</p>
                     <div id="dropPlaceholder2" class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                    <a href="#" class="btn btn-primary my-2">Identify</a>
+                    <button onclick="predictImage(this, 2)" class="btn btn-primary my-2">Identify</button>
                 </div>
             </div>
         </div>

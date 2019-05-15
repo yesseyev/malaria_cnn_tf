@@ -29,3 +29,20 @@ function changeImage(target) {
         targetImg.attr('src', img_src);
     });
 }
+
+function predictImage(target, modelId) {
+    console.log('image-predict');
+
+    var targetImgPlaceholder = $(target).parent().find('.dropBox img');
+    console.log(targetImgPlaceholder);
+    var imgPath = targetImgPlaceholder.attr('src');
+
+    $.post({
+        url: '/predict/' + modelId,
+        data: imgPath,
+        success: function (data) {
+            console.log('SUCCESS', data);
+            alert(data);
+        }
+    });
+}
