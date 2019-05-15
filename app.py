@@ -12,12 +12,14 @@ from models.load import *
 # Init flask app
 app = Flask(__name__)
 
-global model_1, graph_1, model_2, graph_2
-model_1, graph_1 = init(model_id=1)
-model_2, graph_2 = init(model_id=2)
+global model, graph
+model, graph = init()
 
 global img_path, img_src_template
 img_path, img_src_template = './static/img/cells', '%s/%s'
+
+global img_height, img_width
+img_height, img_width = 128, 128
 
 global class_mapper
 class_mapper = {0: 'Parasitized', 1: 'Uninfected'}
@@ -40,14 +42,8 @@ def change():
     return img_src_template % (img_path, random_filename)
 
 
-@app.route('/predict/<int:id>', methods=['POST'])
-def predict(id=1):
-    if id == 2:
-        model, graph = model_2, graph_2
-        img_height, img_width = 128, 128
-    else:
-        model, graph = model_1, graph_1
-        img_height, img_width = 64, 64
+@app.route('/predict', methods=['POST'])
+def predict():
     # Getting image path from request
     img_src = request.get_data()
     print(img_src)

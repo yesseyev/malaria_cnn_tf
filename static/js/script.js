@@ -30,7 +30,7 @@ function changeImage(target) {
     });
 }
 
-function predictImage(target, modelId) {
+function predictImage(target) {
     console.log('image-predict');
 
     var targetImgPlaceholder = $(target).parent().find('.dropBox img');
@@ -38,10 +38,10 @@ function predictImage(target, modelId) {
     var imgPath = targetImgPlaceholder.attr('src');
 
     $.post({
-        url: '/predict/' + modelId,
+        url: '/predict/',
         data: imgPath,
         success: function (data) {
-            console.log('SUCCESS', data);
+            // console.log('SUCCESS', data);
             alert(data);
         }
     });

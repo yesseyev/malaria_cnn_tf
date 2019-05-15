@@ -1,5 +1,4 @@
 from keras.models import model_from_json
-import os
 import tensorflow as tf
 
 
@@ -18,12 +17,9 @@ def get_loaded_model(json_path, weights_path):
     return loaded_model
 
 
-def init(model_id=1):
-    # Loading and compiling first model
-    if model_id == 1:
-        json_model, weights_model = './models/model_cnn_2.json', './models/model_cnn_2.h5'
-    else:
-        json_model, weights_model = './models/model_cnn_4.json', './models/model_cnn_4.h5'
+def init():
+    # Loading and compiling model
+    json_model, weights_model = './models/model_cnn_4.json', './models/model_cnn_4.h5'
     model = get_loaded_model(json_model, weights_model)
 
     graph = tf.get_default_graph()

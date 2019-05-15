@@ -30,16 +30,9 @@
             <h1 class="jumbotron-heading">Malaria cell detection</h1>
             <p class="lead text-muted">Drag the cell image into the rectangle:</p>
             <div class="row">
-                <div class="col-md-6">
-                    <p class="lead text-muted">Image classifier #1</p>
-                    <div id="dropPlaceholder1" class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                    <!-- TODO: write prediction script for dropped image -->
-                    <button onclick="predictImage(this, 1)" class="btn btn-primary my-2">Identify</button>
-                </div>
-                <div class="col-md-6">
-                    <p class="lead text-muted">Image classifier #2</p>
+                <div class="offset-md-3 col-md-6">
                     <div id="dropPlaceholder2" class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                    <button onclick="predictImage(this, 2)" class="btn btn-primary my-2">Identify</button>
+                    <button onclick="predictImage(this)" class="btn btn-primary my-2">Identify</button>
                 </div>
             </div>
         </div>
