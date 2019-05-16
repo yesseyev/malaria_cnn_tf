@@ -12,29 +12,34 @@ function drop(ev) {
     var copy = $('#' + data).clone().removeAttr('id');
     var target = $(ev.target);
     var placeholder = target.hasClass('dropBox') ? target : target.parent('.dropBox');
-    console.log(placeholder);
+    // console.log(placeholder);
     placeholder.empty().append(copy);
 }
 
 function changeImage(target) {
-    console.log('image-change');
     var parent = $(target).parents('div.card');
-    // console.log(parent, parent.parents('div.card'));
+
+    // Target elements
     var targetImg = $(parent).find('img');
-    console.log(targetImg);
+    var targetDiagnose = $(parent).find('.diagnose');
 
-    $.post('/change-image', function (img_src) {
-        console.log(img_src);
-
-        targetImg.attr('src', img_src);
+    $.post({
+        url: '/change-image',
+        dataType: 'json',
+        success: function (data) {
+            targetImg.attr('src', data.img_src);
+            targetDiagnose.text(data.img_class);
+        }
     });
 }
 
 function predictImage(target) {
-    // console.log('image-predict');
-
+    // Hide prev result
+    var resultPrediction = $('.result');
+    resultPrediction.hide();
+    // Placeholder
     var targetImgPlaceholder = $(target).parent().find('.dropBox img');
-    console.log(targetImgPlaceholder);
+
     if (targetImgPlaceholder.length == 0) {
         alert('Please drag and drop cell image!');
     } else {
@@ -44,8 +49,8 @@ function predictImage(target) {
             url: '/predict',
             data: imgPath,
             success: function (data) {
-                // console.log('SUCCESS', data);
-                alert(data);
+                // alert(data);
+                resultPrediction.text(data).show();
             }
         });
     }

@@ -22,7 +22,7 @@
 </header>
 
 <main role="main">
-    <section class="jumbotron text-center">
+    <section class="jumbotron py-5 text-center">
         <div class="container">
             <h1 class="jumbotron-heading">Malaria cell detection</h1>
             <p class="lead text-muted">Drag the cell image into the rectangle:</p>
@@ -30,6 +30,7 @@
                 <div class="offset-md-3 col-md-6">
                     <div id="dropPlaceholder2" class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                     <button onclick="predictImage(this)" class="btn btn-primary my-2">Identify</button>
+                    <div class="alert alert-secondary result" style="display: none;"></div>
                 </div>
             </div>
         </div>
@@ -38,18 +39,18 @@
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row">
-                {% for img_src in images %}
+                {% for (img_src, img_class) in images.items() %}
                     <div class="col-md-3">
                         <div class="card mb-3 shadow-sm card-cell">
                             <img id="drag{{ loop.index }}" class="img-cell" src="{{ img_src }}" draggable="true" ondragstart="drag(event)" width="140" height="140">
                             <div class="card-body">
-                                <p class="card-text">Cell image. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, quod.</p>
+                                <h5 class="card-title text-center">Cell image</h5>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <!-- TODO: write script to change image and text -->
                                         <button type="button" class="btn btn-sm btn-outline-secondary" onclick="changeImage(this)">Change image</button>
                                     </div>
-                                    <small class="text-muted diagnose">Infected or Not</small>
+                                    <small class="text-muted diagnose">{{ img_class }}</small>
                                 </div>
                             </div>
                         </div>

@@ -5,6 +5,7 @@ from keras.preprocessing import image
 import sys
 import os
 import random
+import json
 sys.path.append(os.path.abspath('./models'))
 
 from models.load import *
@@ -36,8 +37,8 @@ def load_image(img_src_path, img_height, img_width):
 
 @app.route('/change-image', methods=['POST'])
 def change():
-    image_src = get_random_image()
-    return image_src
+    image_src, random_img_class = get_random_image()
+    return json.dumps({'img_src': image_src, 'img_class': random_img_class})
 
 
 def get_random_image():
@@ -48,7 +49,7 @@ def get_random_image():
     images = os.listdir('%s/%s' % (img_path, random_img_class))
     random_image_index = int(random.random() * len(images))
 
-    return '%s/%s/%s' % (img_path, random_img_class, images[random_image_index])
+    return '%s/%s/%s' % (img_path, random_img_class, images[random_image_index]), random_img_class
 
 
 @app.route('/predict', methods=['POST'])
@@ -70,9 +71,10 @@ def predict():
 @app.route('/')
 def index():
     number_of_images = 4
-    images = []
+    images = {}
     for i in range(number_of_images):
-        images.append(get_random_image())
+        img_src, random_img_class = get_random_image()
+        images.update({img_src: random_img_class})
     # print(images)
     return render_template('index.html', images=images)
 
