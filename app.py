@@ -36,17 +36,26 @@ def load_image(img_src_path, img_height, img_width):
 
 @app.route('/change-image', methods=['POST'])
 def change():
-    img_files = os.listdir(img_path)
-    random_filename = img_files[int(random.random() * len(img_files))]
+    image_src = get_random_image()
+    return image_src
 
-    return img_src_template % (img_path, random_filename)
+
+def get_random_image():
+    img_classes = os.listdir(img_path)
+    random_class_index = int(random.random() * len(img_classes))
+    random_img_class = img_classes[random_class_index]
+
+    images = os.listdir('%s/%s' % (img_path, random_img_class))
+    random_image_index = int(random.random() * len(images))
+
+    return '%s/%s/%s' % (img_path, random_img_class, images[random_image_index])
 
 
 @app.route('/predict', methods=['POST'])
 def predict():
     # Getting image path from request
     img_src = request.get_data()
-    print(img_src)
+    # print(img_src)
 
     # load a single image
     new_image = load_image(img_src, img_height, img_width)
@@ -60,9 +69,11 @@ def predict():
 
 @app.route('/')
 def index():
-    img_files = os.listdir(img_path)
-    random.shuffle(img_files)
-    images = [img_src_template % (img_path, filename) for filename in img_files[:4]]
+    number_of_images = 4
+    images = []
+    for i in range(number_of_images):
+        images.append(get_random_image())
+    # print(images)
     return render_template('index.html', images=images)
 
 if __name__ == '__main__':

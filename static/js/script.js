@@ -31,7 +31,7 @@ function changeImage(target) {
 }
 
 function predictImage(target) {
-    console.log('image-predict');
+    // console.log('image-predict');
 
     var targetImgPlaceholder = $(target).parent().find('.dropBox img');
     console.log(targetImgPlaceholder);
